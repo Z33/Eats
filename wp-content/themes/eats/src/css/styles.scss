@@ -1,0 +1,98 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+// ==================
+// NOTES
+
+// Headings: 36px
+// Navigation: 18px
+// Forms: 16px
+// Content: 14px
+
+// grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+// @variants hover, focus {
+//     .btn-icon {
+//         @apply bg-eatsLBlue-400;
+//     }
+// }
+
+// ==================
+
+%btnIcon {
+    @apply block p-4 cursor-pointer;
+
+    &:focus,
+    &:hover {
+        @apply bg-eatsLBlue-400;
+    }
+    &:active {
+        @apply bg-eatsLBlue-300;
+    }
+}
+
+// GLOBALS
+@import "typography.scss";
+@import "contact-form-7.scss";
+
+@import "components/link-read-more.scss";
+@import "components/searchform.scss";
+@import "components/tag-type.scss";
+@import "components/title-page.scss";
+
+// LAYOUT
+body {
+    @apply bg-gray-100;
+
+    .overflow-frame {
+        @apply flex flex-col justify-start min-h-screen overflow-x-hidden;
+
+        > header#header,
+        > #Content,
+        > footer#footer {
+            @apply w-full;
+        }
+        > #Content {
+            @apply flex-1;
+
+            .container {
+                @apply pt-8 pb-32 px-8 mt-4 bg-white shadow;
+                min-height: 40vh;
+            }
+        }
+    }
+}
+header#header > .container,
+#Content > .container,
+#Blog > .container,
+footer#footer > .container {
+    @apply mx-auto;
+}
+
+@import "header.scss";
+@import "footer.scss";
+
+// LISTED ITEMS
+.article-list {
+    @apply mt-8 grid grid-flow-row-dense gap-8;
+
+    > article:not(:last-of-type) {
+        @apply pb-8 border-b border-eatsBlue-100;
+    }
+}
+
+// LIST POST TYPES
+@import "partials/list-blog.scss";
+@import "partials/list-food_menu.scss";
+@import "partials/list-page.scss";
+
+// SINGLE PAGES
+@import "partials/single-blog.scss";
+@import "partials/single-food_menu.scss";
+@import "partials/single-page.scss";
+
+// PAGE TEMPLATES
+@import "page-templates/food-menu.scss";
+
+// ==================
+
+@import "tailwindcss/utilities";

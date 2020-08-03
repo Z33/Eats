@@ -1,0 +1,42 @@
+body.page-template-food-menu {
+    .food-menu-list {
+        article {
+            &:not(:last-of-type) {
+                @apply mb-16;
+            }
+
+            h2 {
+                @apply mb-4;
+            }
+
+            > ul {
+                @apply flex flex-wrap justify-start items-start -mt-4 -mr-4;
+
+                > li {
+                    @apply max-w-full -mb-2 -ml-2 mt-4 mr-4 text-eatsGray-200;
+
+                    > div {
+                        @apply w-full flex flex-no-wrap justify-start items-start pt-2 pr-2;
+
+                        > * {
+                            @apply mb-2 ml-2;
+                        }
+
+                        .title {
+                            @apply block text-lg;
+                        }
+                        .spacer {
+                            @apply flex-1 border-b self-end opacity-25;
+                            border-color: currentColor;
+                            min-width: 50px;
+                        }
+                    }
+                }
+
+                .about {
+                    @apply w-full text-sm;
+                }
+            }
+        }
+    }
+}

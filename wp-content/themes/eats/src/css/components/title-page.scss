@@ -1,0 +1,11 @@
+header.title-page {
+    @apply relative pt-8 pb-4 mb-8;
+
+    &::after {
+        content: "";
+        @apply absolute bottom-0 left-0 w-64 border-b-2 border-eatsBlue-100;
+    }
+    h1 {
+        @apply font-bold;
+    }
+}

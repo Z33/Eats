@@ -1,0 +1,225 @@
+header#header {
+    @apply text-white bg-eatsLBlue-500;
+
+    a {
+        @apply text-white;
+
+        &:focus,
+        &:hover {
+            @apply text-gray-100;
+        }
+        &:active {
+            @apply text-white;
+        }
+    }
+
+    svg {
+        fill: #fff;
+    }
+
+    > .container > .flex {
+        @apply grid grid-flow-row-dense grid-cols-3;
+        grid-template-areas:
+            "menuBtn logo find"
+            "menu menu menu";
+
+        @screen md {
+            @apply grid-cols-2;
+            grid-template-areas:
+                "logo find"
+                "menu menu";
+        }
+    }
+
+    #nav-logo,
+    #nav-menu-btn,
+    #nav-search {
+        @apply flex justify-start items-stretch py-2 px-4;
+    }
+
+    #nav-logo {
+        @apply justify-center;
+        grid-area: logo;
+
+        @screen sm {
+            @apply justify-start;
+        }
+    }
+    #nav-menu-btn {
+        grid-area: menuBtn;
+    }
+    #nav-search {
+        @apply justify-end;
+        grid-area: find;
+    }
+    #nav-menu {
+        grid-area: menu;
+    }
+    //
+    #nav-logo {
+        a {
+            @apply flex flex-wrap justify-center items-center pt-2 pr-2;
+
+            &:focus,
+            &:hover {
+                @apply bg-eatsLBlue-400;
+            }
+            &:active {
+                @apply bg-eatsLBlue-300;
+            }
+            svg,
+            span {
+                @apply mb-2 ml-2;
+            }
+        }
+        svg {
+            @apply w-16;
+        }
+        span {
+            @apply text-xl font-bold leading-none;
+        }
+    }
+    #nav-menu-btn {
+        @apply flex justify-start items-center;
+
+        label {
+            @extend %btnIcon;
+
+            svg {
+                @apply h-8;
+            }
+        }
+
+        @screen md {
+            @apply hidden;
+        }
+    }
+    #nav-menu {
+        @apply hidden relative bg-eatsBlue-500;
+
+        @screen sm {
+            @apply block;
+        }
+
+        // extending dark blue bg
+        &::before,
+        &::after {
+            content: "";
+            @apply absolute top-0 h-full w-full bg-eatsBlue-500;
+        }
+        &::before {
+            right: 100%;
+        }
+        &::after {
+            left: 100%;
+        }
+
+        ul {
+            @apply flex flex-wrap justify-start items-stretch;
+
+            a {
+                @apply block w-full p-4 text-lg font-normal;
+
+                &:focus,
+                &:hover {
+                    @apply bg-eatsLBlue-400;
+                }
+                &:active {
+                    @apply bg-eatsLBlue-300;
+                }
+            }
+            li {
+                @apply w-full;
+
+                &:nth-child(even) {
+                    @apply bg-white bg-opacity-10;
+                }
+
+                &.current_page_item a {
+                    @apply text-eatsYellow-500 bg-eatsLBlue-800;
+
+                    &:focus,
+                    &:hover {
+                        @apply bg-eatsLBlue-700;
+                    }
+                    &:active {
+                        @apply bg-eatsLBlue-600;
+                    }
+                }
+            }
+
+            @screen sm {
+                li {
+                    @apply w-auto;
+
+                    &:nth-child(even) {
+                        @apply bg-transparent;
+                    }
+                }
+            }
+        }
+    }
+    #nav-search {
+        @apply flex items-center;
+
+        > .frame {
+            @apply relative;
+        }
+
+        label[for="navSearch"] {
+            @extend %btnIcon;
+
+            svg {
+                @apply h-8;
+            }
+        }
+
+        .form {
+            @apply z-10 absolute right-0 p-2 bg-eatsLBlue-500 rounded-b shadow opacity-0 transition ease-in-out duration-500;
+            top: -100vh;
+            width: 100vw;
+            max-width: 400px;
+            transform: translateY(-5px) translateZ(0);
+        }
+    }
+
+    // hidden checkbox inputs to avoid extra js
+    input[id="navMenu"] {
+        @apply hidden;
+
+        &:checked + .container {
+            #nav-menu-btn {
+                label {
+                    .open {
+                        @apply hidden;
+                    }
+                    .close {
+                        @apply block;
+                    }
+                }
+            }
+            #nav-menu {
+                @apply block;
+            }
+        }
+    }
+    input[id="navSearch"] {
+        @apply hidden;
+
+        &:checked + #nav-search {
+            label {
+                .open {
+                    @apply hidden;
+                }
+                .close {
+                    @apply block;
+                }
+            }
+            .form {
+                @apply opacity-100;
+                top: 100%;
+                transform: translateY(0) translateZ(0);
+            }
+        }
+    }
+}

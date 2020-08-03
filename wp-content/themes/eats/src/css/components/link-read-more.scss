@@ -1,0 +1,12 @@
+.link-read-more {
+    @apply flex justify-start items-center font-normal;
+
+    span:first-of-type {
+        @apply mr-1;
+    }
+
+    svg {
+        @apply w-auto h-4;
+        fill: currentColor;
+    }
+}
